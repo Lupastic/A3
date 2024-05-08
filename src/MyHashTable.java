@@ -30,14 +30,11 @@
             size = 0;
         }
 
-        private int hash(K key) {
-            int hash = key.hashCode() % M;
-            if (hash < 0) {
-                hash += M;
-            }
-            return hash;
-        }
-
+     private int hash(K key) {
+         int hash = key.hashCode();
+         hash = Math.abs(hash);
+         return hash % M;
+     }
 
         public void put(K key, V value) {
             int id = hash(key);
