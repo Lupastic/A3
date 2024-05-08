@@ -1,7 +1,4 @@
-    import java.util.ArrayList;
-    import java.util.HashMap;
-
-    public class MyHashTable<K, V> {
+ public class MyHashTable<K, V> {
         private class HashNode<K, V> {
             K key;
             V value;
@@ -46,7 +43,6 @@
             int id = hash(key);
             HashNode<K, V> new_id = new HashNode<>(key, value);
             HashNode<K, V> rnow = chainArray[id];
-
             if (rnow == null) {
                 chainArray[id] = new_id;
                 size++;
