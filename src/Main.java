@@ -1,15 +1,17 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+    //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        MyHashTable<String, Integer> myHashTable = new MyHashTable<>();
+        myHashTable.put("baha", 1);
+        myHashTable.put("daulet", 2);
+        myHashTable.put("nurik", 3);
+        System.out.println("get: " + myHashTable.get("baha"));
+        System.out.println("contains: " + myHashTable.contains(2));
+        System.out.println("remove:" + myHashTable.remove("daulet"));
+        System.out.println("after remove " + myHashTable.get("daulet"));
+        myHashTable.put("Sancho", 4);
+        System.out.println("new people " + myHashTable.getKey(4));
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
     }
 }

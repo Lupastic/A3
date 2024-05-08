@@ -34,30 +34,39 @@ public class MyHashTable<K, V> {
     }
 
     private int hash(K key) {
-        return key.hashCode() % M;
+        int hash = key.hashCode() % M;
+        if (hash < 0) {
+            hash += M;
+        }
+        return hash;
     }
 
+
     public void put(K key, V value) {
-        int index = hash(key);
-        if (chainArray[index] == null) {
-            chainArray[index] = new HashNode<>(key, value);
+        int index = hash(key); // Используем исправленную функцию хеширования
+        HashNode<K, V> newNode = new HashNode<>(key, value);
+        HashNode<K, V> current = chainArray[index];
+
+        if (current == null) {
+            chainArray[index] = newNode;
             size++;
-        } else {
-            HashNode<K, V> node = chainArray[index];
-            while (true) {
-                if (node.key.equals(key)) {
-                    node.value = value;
-                    break;
-                }
-                if (node.next == null) {
-                    node.next = new HashNode<>(key, value);
-                    size++;
-                    break;
-                }
-                node = node.next;
-            }
+            return;
         }
+
+        HashNode<K, V> prev = null;
+        while (current != null) {
+            if (current.key.equals(key)) {
+                current.value = value;
+                return;
+            }
+            prev = current;
+            current = current.next;
+        }
+
+        prev.next = newNode;
+        size++;
     }
+
 
     public V get(K key) {
         int index = hash(key);
