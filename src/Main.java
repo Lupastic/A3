@@ -14,5 +14,15 @@ public class Main {
             table.put(new MyTestingClass(i), new Student("key"+i));
         }
         table.bucketShow();
+        BinarySearchTree<Integer, String> tree = new BinarySearchTree<>();
+        tree.put(50, "Baha");
+        tree.put(25, "daulet");
+        tree.put(15, "sanjar");
+        tree.put(30, "nurik");
+        tree.put(75, "spiderman");
+        tree.put(85, "man");
+        System.out.println(tree.get(75));
+        System.out.println(tree.put(19,"MyBirthday"));
+        tree.inOrderTraversal(tree.getRoot());
     }
 }

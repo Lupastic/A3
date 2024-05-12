@@ -1,6 +1,6 @@
 public class MyHashTable<K, V> {
 
-        private class HashNode<K, V> {
+        private static class HashNode<K, V> {
             K key;
             V value;
             HashNode<K, V> next;
